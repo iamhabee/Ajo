@@ -42,7 +42,7 @@ const WidgetsBrand = ({withCharts})=>{
         leftFooter="tweets"
       >
         <CIcon
-          name="cib-twitter"
+          // name="cib-twitter"
           height="52"
           className="my-4"
         />
