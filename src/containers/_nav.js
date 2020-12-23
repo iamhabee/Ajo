@@ -13,35 +13,35 @@ export default [
   //   _tag: 'CSidebarNavTitle',
   //   _children: ['Theme']
   // },
-  // {
+  //  {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Colors',
   //   to: '/theme/colors',
-  //   icon: 'cil-drop',
+  //    icon: 'cil-drop',
   // },
   {
     _tag: 'CSidebarNavItem',
     name: 'Profile',
     to: '/theme/typography',
-    icon: 'cil-pencil',
+    icon: 'cil-user',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Group',
-    to: '/theme/colors',
-    icon: 'cil-pencil',
+    to: '/group',
+    icon: 'cil-people',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Transactions',
     to: '/base/cards',
-    icon: 'cil-pencil',
+    icon: 'cil-wallet',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Settings',
     to: '/theme/typography',
-    icon: 'cil-pencil',
+    icon: 'cil-settings',
   },
   // {
   //   _tag: 'CSidebarNavTitle',
