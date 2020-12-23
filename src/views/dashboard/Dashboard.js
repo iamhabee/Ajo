@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useState, useEffect } from 'react'
 import {
   CBadge,
   CButton,
@@ -15,15 +15,49 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import MainChartExample from '../charts/MainChartExample.js'
+import { logout } from '../logic.js'
+// import { fetchAllGroup } from '../logic.js'
 
 const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
 
+const user = JSON.parse(localStorage.getItem("user"))
+const token = user && user.token
+
 const Dashboard = () => {
+  const [group, setgroup] = useState([])
+  console.log(group)
+  useEffect(() => {
+    fetchAllGroup();
+  }, [])
+
+  const fetchAllGroup =()=>{
+    const requestOptions={
+        method:"GET",
+        headers:{
+          "Content-Type":"application/json",
+          ...{"Authorization":"Bearer" +token}
+        }
+      }
+    fetch("http://142.93.152.229/ajo/api/fetch_group", requestOptions)
+    .then(async res=>{
+      const data = await res.json()
+      setgroup(data)
+      if(data.status_code===401){
+        logout()
+      }
+      console.log(data)
+        return data
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+  }
+  
   return (
     <>
       <WidgetsDropdown />
-      <CCard>
+      {<CCard>
         <CCardBody>
           <CRow>
             <CCol sm="5">
@@ -105,7 +139,7 @@ const Dashboard = () => {
             </CCol>
           </CRow>
         </CCardFooter>
-      </CCard>
+      </CCard>}
 
       <WidgetsBrand withCharts/>
 

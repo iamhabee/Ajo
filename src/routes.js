@@ -37,12 +37,11 @@ const Typography = React.lazy(() => import('./views/theme/typography/Typography'
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
-const Groups = React.lazy(() => import('./components/group/Groups'));
-const Table = React.lazy(() => import('./components/group/Table'));
-const Table1 = React.lazy(() => import('./components/group/Table1'));
+const Groups = React.lazy(() => import('./Users/group/Groups'));
+const Table = React.lazy(() => import('./Users/group/Table'));
+const Table1 = React.lazy(() => import('./Users/group/Table1'));
 const routes = [
   { path: '/home', exact: true, name: 'Home' },
-  { path:'/components', name:'Components', component: Groups, exact: true },
   {path: '/group', name:'Groups', component: Groups },
   {path: '/table', name:'Table', component:Table},
   {path: '/table1', name: 'Table1', component:Table1},
