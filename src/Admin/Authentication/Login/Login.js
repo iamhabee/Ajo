@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import {
   CButton,
@@ -15,8 +15,30 @@ import {
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { login } from '../../../views/logic'
 
 const Login = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleChange=(e)=>{
+    const {name, value} = e.target
+    if(name === "email"){
+      setEmail(value)
+    }else{
+      setPassword(value)
+    }
+  }
+
+  const handleSubmit = () =>{
+    if(email !== "" && password !== ""){
+      login(email, password)
+    }else{
+      alert("email and password must not be empty")
+    }
+  }
+
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
@@ -34,7 +56,9 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="text" placeholder="Username" autoComplete="username" />
+
+                      <CInput onChange={handleChange} value={email} type="text" placeholder="Email" name="email"/>
+                    
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
@@ -42,11 +66,13 @@ const Login = () => {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" placeholder="Password" autoComplete="current-password" />
+
+                      <CInput name="password" onChange={handleChange} value={password} type="password" placeholder="Password" />
+                      
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <Link to="/home" ><CButton color="primary" className="px-4">Login</CButton></Link>
+                        <CButton color="primary" type="button" onClick={handleSubmit} className="px-4">Login</CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>
