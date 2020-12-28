@@ -31,7 +31,8 @@ const Login = () => {
     }
   }
 
-  const handleSubmit = () =>{
+  const handleSubmit = (e) =>{
+    e.preventDefault()
     if(email !== "" && password !== ""){
       login(email, password)
     }else{
@@ -47,7 +48,7 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     <CInputGroup className="mb-3">
@@ -72,7 +73,10 @@ const Login = () => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" type="button" onClick={handleSubmit} className="px-4">Login</CButton>
+                        <div className="pt-3 text-center">
+                          <div className="sk-spinner sk-spinner-pulse"></div>
+                        </div>
+                        <CButton color="primary" type="submit" onClick={handleSubmit} className="px-4">Login</CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>

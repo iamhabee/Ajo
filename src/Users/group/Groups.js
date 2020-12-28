@@ -51,7 +51,8 @@ import { logout } from '../../views/logic';
     fetch("http://142.93.152.229/ajo/api/fetch_group", requestOptions)
     .then(async res=>{
       const data = await res.json()
-      this.setState({allGroups:data})
+      // this.setState({allGroups:data})
+      
       if(data.status_code===401){
         logout()
       }

@@ -8,6 +8,7 @@ import { CContainer, CFade } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
+import Page404 from '../views/pages/page404/Page404'
   
 const loading = (
   <div className="pt-3 text-center">
@@ -35,7 +36,10 @@ const TheContent = () => {
                   )} />
               )
             })}
-            <Redirect from="/home" to="/dashboard" />
+            {/* <Redirect from="*" to="/dashboard" /> */}
+            <Route exact path="/error/404" name="Error Page" render={props => <Page404 {...props}/>} />
+            <Redirect from="/" to="/dashboard" />
+            <Redirect to="/error/404" />
           </Switch>
         </Suspense>
       </CContainer>

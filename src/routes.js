@@ -41,11 +41,11 @@ const Groups = React.lazy(() => import('./Users/group/Groups'));
 const Table = React.lazy(() => import('./Users/group/Table'));
 const Table1 = React.lazy(() => import('./Users/group/Table1'));
 const routes = [
-  { path: '/home', exact: true, name: 'Home' },
+  { path: '/', exact: true, name: 'Home' },
+  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   {path: '/group', name:'Groups', component: Groups },
   {path: '/table', name:'Table', component:Table},
   {path: '/table1', name: 'Table1', component:Table1},
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },

@@ -10,7 +10,9 @@ import {
   CSidebarMinimizer,
   CSidebarNavDropdown,
   CSidebarNavItem,
+  CButton,
 } from '@coreui/react'
+import { logout } from '../views/logic'
 
 import CIcon from '@coreui/icons-react'
 
@@ -20,6 +22,10 @@ import navigation from './_nav'
 const TheSidebar = () => {
   const dispatch = useDispatch()
   const show = useSelector(state => state.sidebarShow)
+
+  const logingOut =()=>{
+    logout()
+  }
 
   return (
     <CSidebar
@@ -49,6 +55,7 @@ const TheSidebar = () => {
             CSidebarNavTitle
           }}
         />
+        <CButton onClick={()=>logingOut()} >Logout</CButton>
       </CSidebarNav>
       <CSidebarMinimizer className="c-d-md-down-none"/>
     </CSidebar>

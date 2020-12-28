@@ -15,8 +15,8 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import MainChartExample from '../charts/MainChartExample.js'
-import { logout } from '../logic.js'
-// import { fetchAllGroup } from '../logic.js'
+// import { logout } from '../logic.js'
+import { fetchAllGroup } from '../logic.js'
 
 const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
@@ -31,29 +31,7 @@ const Dashboard = () => {
     fetchAllGroup();
   }, [])
 
-  const fetchAllGroup =()=>{
-    const requestOptions={
-        method:"GET",
-        headers:{
-          "Content-Type":"application/json",
-          ...{"Authorization":"Bearer" +token}
-        }
-      }
-    fetch("http://142.93.152.229/ajo/api/fetch_group", requestOptions)
-    .then(async res=>{
-      const data = await res.json()
-      setgroup(data)
-      if(data.status_code===401){
-        logout()
-      }
-      console.log(data)
-        return data
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-  }
-  
+
   return (
     <>
       <WidgetsDropdown />
