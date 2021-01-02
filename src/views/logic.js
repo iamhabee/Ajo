@@ -77,10 +77,10 @@ function authHeader() {
         // ...
       }
       if (!response.ok) {
-        const error = (data && data.message) || response.statusText;
-        if (error === "unauthorized") {
+        const error = response.statusText;
+        if (error === "Unauthorized") {
           logout()
-          history.push("/login");
+          // history.push("/login");
         }
         return Promise.reject(error);
       }
